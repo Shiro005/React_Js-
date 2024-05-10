@@ -3,9 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Card from './components/Card'
+import Demo from './components/demo'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   let name1 = "Shriyash";
   let name2 = "Hitesh";
@@ -14,6 +14,9 @@ function App() {
 
   let info_hitesh = `Hello myself hitesh and I am a tech expert and my student is shriyash rulhe he is a good person`;
 
+  let a = 10
+  let b = 20
+
 
   return (
     <>
@@ -21,6 +24,8 @@ function App() {
 
       <Card username={name1} info = {info_shriyash} btnText="click me" />
       <Card username={name2} info = {info_hitesh} />
+
+      <Demo num1={a} num2={b} />
     </>
   )
 }
