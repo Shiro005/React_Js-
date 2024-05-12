@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
-const Card = ({laptopName, laptopDesc, image}) => {
+const Card = ({ laptopName, laptopDesc, image }) => {
+
+    const [Color, setColors] = useState('white')
+
+    function random() {
+        let colors = ['red', 'blue', 'green', 'yellow', 'purple', 'pink', 'orange', 'black', 'white']
+        let randomColor = colors[Math.floor(Math.random() * colors.length)]
+        setColors(randomColor)
+    }
+
+
     return (
         <>
-            <div className="w-[300px] rounded-md bg-white m-4">
+            <div onClick={random} className="w-[300px] rounded-md m-4 flex-row" style={{ backgroundColor: Color }}>
                 <img
                     src={image}
                     alt="Laptop"

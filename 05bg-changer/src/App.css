@@ -40,18 +40,3 @@
 .read-the-docs {
   color: #888;
 }
-
-.color_change{
-  border: 1px solid white;
-  background: linear-gradient(45deg, rgb(189, 228, 248), rgb(201, 247, 213), rgb(224, 206, 234));
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.color_change button {
-  border: 1px solid white;
-  margin: 0px 5px;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 5px 10px;
-  outline: 0;
-}

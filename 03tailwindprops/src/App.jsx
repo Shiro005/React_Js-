@@ -2,30 +2,26 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Card from './components/Card'
-import Demo from './components/demo'
+import Card from './Components/Card'
 
 function App() {
+  const [count, setCount] = useState(0)
 
-  let name1 = "Shriyash";
-  let name2 = "Hitesh";
+  function CreatelaptopData(laptopName, laptopDesc, image) {
+    this.laptopName = laptopName
+    this.laptopDesc = laptopDesc
+    this.image = image
+  }
 
-  let info_shriyash = `Hello myself shriyash and my mentor name is hitesh choudhary and he is a nice person `;
+  const laptop1 = new CreatelaptopData('Asus TUF f15', 'HP 2023 Latest Pavilion Business Laptop, 15.6" FHD Touchscreen, 13th Gen Intel Core i7-1355U, 64GB RAM, 2TB PCIe SSD, Webcam, FP Reader, Backlit KB, Wi-Fi 6, Windows 11 Pro, Silver', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D')
 
-  let info_hitesh = `Hello myself hitesh and I am a tech expert and my student is shriyash rulhe he is a good person`;
-
-  let a = 10
-  let b = 20
-
+  const laptop2 = new CreatelaptopData('Macbook M2', 'HP 2023 Latest Pavilion Business Laptop, 15.6" FHD Touchscreen, 13th Gen Intel Core i7-1355U, 64GB RAM, 2TB PCIe SSD, Webcam, FP Reader, Backlit KB, Wi-Fi 6, Windows 11 Pro, Silver', 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D')
 
   return (
     <>
-      <h1 className='bg-gray-400 text-black p-4 rounded-xl mb-4 font-bold'>Tailwind test</h1>
+      <Card laptopName={laptop1.laptopName} laptopDesc={laptop1.laptopDesc} image={laptop1.image} />
 
-      <Card username={name1} info = {info_shriyash} btnText="click me" />
-      <Card username={name2} info = {info_hitesh} />
-
-      <Demo num1={a} num2={b} />
+      <Card laptopName={laptop2.laptopName} laptopDesc={laptop2.laptopDesc} image={laptop2.image} />
     </>
   )
 }
