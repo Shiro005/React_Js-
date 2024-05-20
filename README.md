@@ -21,6 +21,9 @@ Explore the innovative ideas behind each project:
 - **Project 5: Background Changer**  
   UI of background color changer
 
+- **Project 6: Password Generator**  
+  useState, useEffect and useCallback 
+
 ## Project Details 📝
 
 ### 1. Vite React
@@ -65,6 +68,30 @@ This is a beginner-level project where we learn how to inject Tailwind CSS into 
 git init 
 git clone repo_link
 cd 03tailwindprops
+npm i
+npm run dev
+```
+
+### 5. Bg-Changer
+This is a beginner-level project where we learn how to inject Tailwind CSS into our Vite React project as well as concept of useState and more other tailwind css props and classes 
+
+**How to Run:**
+```bash
+git init 
+git clone repo_link
+cd 05bg-changer
+npm i
+npm run dev
+```
+
+### 6. Password Generator
+This is a beginner-level project where we learn how to use the useState and useEffect and useCallback as well as concept of tailwind css  
+
+**How to Run:**
+```bash
+git init 
+git clone repo_link
+cd 06PasswordGenerator
 npm i
 npm run dev
 ```
