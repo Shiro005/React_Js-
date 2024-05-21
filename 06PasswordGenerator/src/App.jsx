@@ -1,44 +1,90 @@
-import { useState, useCallback } from 'react'
+import React from 'react'
+import { useCallback } from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { useRef } from 'react'
+
 import './App.css'
 
-function App() {
+const App = () => {
+  const [Password, setPassword] = useState("")
   const [Length, setLength] = useState(8)
   const [numberAllowed, setnumberAllowed] = useState(false)
   const [charAllowed, setcharAllowed] = useState(false)
-  const [Password, setPassword] = useState("")
+
+  const PasswordRef = useRef(null)
 
   const PasswordGenerator = useCallback(() => {
     let pass = ""
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
     if (numberAllowed) str += "0123456789"
-    if (charAllowed) str += "!@#$%^&*(){}~"
+    if (charAllowed) str += "!@#$%^~&*()_+|}{[]:><?/,."
 
-    for (let i = 1; i <= array.length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1)
-      pass = str.charAt(char)
+    for (let i = 0; i < Length; i++) {
+      let char = Math.floor(Math.random() * str.length)
+      pass += str.charAt(char)
     }
 
     setPassword(pass)
+  }, [Length, setPassword, numberAllowed, charAllowed])
 
+  const copyPassword = useCallback(() => {
+    PasswordRef.current?.select()
+    // PasswordRef.current?.setSelectionRange(0, 3)
+    window.navigator.clipboard.writeText(Password)
+  }, [Password])
 
-  }, [length, numberAllowed, charAllowed, setPassword])
+  useEffect(() => {
+    PasswordGenerator()
+  }, [length, numberAllowed, charAllowed, PasswordGenerator])
+
 
   return (
     <>
-      <div className='w-full max-w-md mx-auto shadow-lg rounded-lg bg-white text-sky-900 px-5 py-3 text-2xl font-serif font-bold'>
-        <h2 className='mx-5 mb-3 '>Password Generator</h2>
-        <div className='flex shadow rounded-lg overflow-hidden mb-4'>
+      <div className='container'>
+        <div className='main_container'>
+          <h2>PassWord Generator</h2>
           <input
+            className='passInput'
             type="text"
-            value={Password}
-            className='outline-none w-full py-1 px-3 text-wrap text-center bg-black-100 text-white shadow-xl'
-
             readOnly
+            value={Password}
+            ref={PasswordRef}
           />
+          <button className='btn' onClick={copyPassword}>Copy</button>
+        </div>
+
+        <div className='main1_container'>
+          <input
+            type="range"
+            id='lengthInput'
+            min={6}
+            max={15}
+            value={Length}
+            onChange={(e) => setLength(e.target.value)}
+          />
+          <label htmlFor="lengthInput">Length : {Length}</label>
+        </div>
+
+        <div className="main1_container">
+          <input
+            type="checkbox"
+            checked={numberAllowed}
+            id='numberInput'
+            onChange={() => setnumberAllowed((prev) => !prev)}
+          />
+          <label htmlFor="numberInput">Number</label>
+
+          <input
+            type="checkbox"
+            id='charInput'
+            checked={charAllowed}
+            onChange={() => setcharAllowed((prev) => !prev)}
+          />
+          <label htmlFor="charInput">Character</label>
         </div>
       </div>
-
     </>
   )
 }

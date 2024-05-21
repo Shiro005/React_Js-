@@ -1,38 +1,72 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react'
+import { useCallback } from 'react'
+import { useState } from 'react'
+import { useRef } from 'react'
 
-function App() {
+const App = () => {
 
-  const [Color, setColor] = useState('orange')
+    const [Password, setPassword] = useState("")
+    const [Length, setLength] = useState(8)
+    const [AllowedEmojis, setAllowedEmojis] = useState(false)
 
-  const [Name, setName] = useState('None')
 
-  function changeData() {
-    let Colors = ['white', 'red', 'blue', 'orange', 'yellow', 'skyblue', 'darkred', 'pink', 'hotpink', 'green', 'lightgreen']
+    const PasswordRef = useRef("null")
 
-    let RandomColors = Colors[Math.floor(Math.random() * Colors.length)]
-    setColor(RandomColors)
+    const PasswordGenerator = useCallback(() => {
+        let pass = ""
+        let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-    let Names = ['Suresh', 'Mahesh', 'Adrash', 'Shriyash', 'Pranav', 'Yash', 'Adinath', 'Akshay', 'Babalu', 'Gopal']
+        if (AllowedEmojis) str += "😊🌟🎉💖🔥🌈"
 
-    let randomName = Names[Math.floor(Math.random() * Names.length)]
-    setName(randomName)
-  }
+        for (let i = 0; i < Length; i++) {
+            let char = Math.floor(Math.random() * str.length)
+            pass += str.charAt(char)
+        }
 
-  return (
-    <>
-      <div style={{ border: '1px solid white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '10px', borderRadius: '10px', backgroundColor: 'white' }}>
-        <h2 style={{ color: 'black' }}>In this box every click background color of box and data inside the box is changes</h2>
+        setPassword(pass)
+    }, [setPassword, Length, AllowedEmojis])
 
-        <div style={{ backgroundColor: Color, height: '200px', width: '500px', margin: '10px', borderRadius: '10px', textAlign: 'center', fontWeight: 'bold', color: 'white' }}>
-          <h2>I am {Name}</h2>
-        </div >
+    const copyPassword = useCallback(() => {
+        PasswordRef.current?.select()
+        window.navigator.clipboard.writeText(Password)
+    }, [Password])
 
-        <button onClick={changeData}>Change Data</button>
-      </div>
+    return (
+        <>
+            <h2>This is a Password Generator</h2>
 
-    </>
-  )
+            <input
+                type="text"
+                value={Password}
+                id='PasswordInput'
+                readOnly
+                ref={PasswordRef}
+            />
+            <label htmlFor="PasswordInput">Length : {Length}</label>
+
+
+
+            <button onClick={PasswordGenerator}>Generate</button>
+            <button onClick={copyPassword}>Copy</button>
+
+            <input
+                type="range"
+                value={Length}
+                id='lengthInput'
+                min={6}
+                max={15}
+                onChange={(e) => setLength(e.target.value)}
+            />
+
+            <input
+                type="checkbox"
+                checked={AllowedEmojis}
+                onChange={() => setAllowedEmojis((prev) => !prev)}
+                id='emojisInput'
+            />
+            <label htmlFor="emojisInput"></label>
+        </>
+    )
 }
 
-export default App;
+export default App
