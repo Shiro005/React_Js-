@@ -1,0 +1,39 @@
+
+.listBox{
+    padding: 10px;
+    border: none;
+}
+
+.questionBox{
+    border: 2px solid chartreuse;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: rgba(248, 248, 248, 0.11);
+    font-size: 0.8rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.btn{
+    border: none;
+    padding: 5px 10px;
+    background-color: chartreuse;
+    margin: 4px 0px;
+    color: black;
+    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.coins{
+    border: none;
+    color: red;
+}
