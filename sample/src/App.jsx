@@ -1,15 +1,25 @@
 import React from 'react'
-import { useState } from 'react'
-import CopyButton from './components'
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import About from './components/About/About';
+import Project from './components/Project/Project'
+import Contact from './components/Contact/Contact'
 
 const App = () => {
-    const text = "This is normal text and copy this text"
-
     return (
         <>
-            <h2>{text}</h2>
-            <CopyButton code={text} />
+            <Router>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="project" element={<Project />} />
+                    <Route path="contact" element={<Contact />} />
+                </Routes>
+                <Footer />
+            </Router>
         </>
     )
 }
