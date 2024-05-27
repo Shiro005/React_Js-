@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './Layout.jsx'
 import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
+import Contact from './components/Contact/Contact.jsx'
+import Login from './components/Login/Login.jsx'
+import Github from './components/Github/Github.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,10 +22,23 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <About />
+      },
+      {
+        path: 'login',
+        element: <Login />
+      },
+      {
+        path: 'contact',
+        element: <Contact />
+      },
+      {
+        path: 'github',
+        element: <Github />
       }
     ]
   }
 ])
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
