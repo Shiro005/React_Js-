@@ -1,56 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 function Github() {
-    const [data, setData] = useState({ followers: 0, avatar_url: '', location: '', public_repos: '' });
-    const [search, setSearch] = useState('');
+    const [data, setData] = useState([])
 
     useEffect(() => {
         fetch('https://api.github.com/users/Shiro005')
-            .then(response => response.json())
+            .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setData(data);
-            });
-    }, []);
-
-    const searchGithub = () => {
-        fetch(`https://api.github.com/users/${search}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setData(data);
+                setData(data)
             })
-            .catch(error => console.error('Error searching Github:', error));
-    };
-
-    const handleSearchInputChange = (e) => {
-        setSearch(e.target.value);
-    };
+    }, [])
 
     return (
         <>
-            <div className="flex items-center">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    className="py-2 px-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 flex-grow"
-                    value={search}
-                    onChange={handleSearchInputChange}
-                />
-                <button
-                    className="py-2 px-4 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                    onClick={searchGithub}
-                >
-                    Search
-                </button>
-            </div>
-            <div className='text-center m-4 bg-gray-600 text-white p-4 text-3xl'>Github followers: {data.followers}
-                <img src={data.avatar_url} alt="Git picture" width={300} />
-                <h3>Current Location : {data.location}</h3>
-                <h3>Current Repo : {data.public_repos}</h3>
+            <div className="max-w-lg mx-lg bg-white shadow-lg rounded-lg overflow-hidden m-5">
+                <div className="sm:flex sm:items-center px-6 py-4">
+                    <img
+                        className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full"
+                        src={data.avatar_url}
+                        alt="User profile"
+                    />
+                    <div className="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">
+                        <p className="text-xl leading-tight">{data.name}</p>
+                        <div className="mt-4">
+                            <p className="text-gray-600">Followers: {data.followers}</p>
+                            <p className="text-gray-600">Following: {data.following}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
-    );
+    )
 }
 
-export default Github;
+export default Github

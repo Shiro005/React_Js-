@@ -1,25 +1,25 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import About from './components/About/About';
-import Project from './components/Project/Project'
-import Contact from './components/Contact/Contact'
+import React, { useState } from 'react'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 
 const App = () => {
+    const [color, setColor] = useState('red')
+
+    function changeColor() {
+        setColor('purple')
+    }
+
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" element={<Layout />}>
+                <Route path="" element={<Home />} />
+            </Route>
+        )
+    )
+
     return (
         <>
-            <Router>
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="project" element={<Project />} />
-                    <Route path="contact" element={<Contact />} />
-                </Routes>
-                <Footer />
-            </Router>
+            <h3 style={{ backgroundColor: color }}>This is a react page</h3>
+            <button onClick={changeColor}>Click Me</button>
         </>
     )
 }
