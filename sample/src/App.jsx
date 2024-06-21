@@ -1,27 +1,11 @@
-import React, { useState } from 'react'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import React from 'react'
 
 const App = () => {
-    const [color, setColor] = useState('red')
-
-    function changeColor() {
-        setColor('purple')
-    }
-
-    const router = createBrowserRouter(
-        createRoutesFromElements(
-            <Route path="/" element={<Layout />}>
-                <Route path="" element={<Home />} />
-            </Route>
-        )
-    )
-
-    return (
-        <>
-            <h3 style={{ backgroundColor: color }}>This is a react page</h3>
-            <button onClick={changeColor}>Click Me</button>
-        </>
-    )
+  return (
+    <>
+    <h2>This is a react js project</h2>
+    </>
+  )
 }
 
 export default App
