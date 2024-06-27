@@ -1,4 +1,12 @@
-body {
-  background-color: rgb(33, 33, 33);
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+body{
+  background-color: black;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  font-family: "Playwrite GB S", cursive;
+  font-weight: bold;
 }
