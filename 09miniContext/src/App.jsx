@@ -1,8 +1,17 @@
 import React from 'react'
+import UserContextProvider from './context/UserContextProvider'
+import Login from './component/Login'
+import Profile from './component/Profile'
 
 const App = () => {
+  
+
   return (
-    <h2>React with Shriyash </h2>
+    <UserContextProvider>
+      <h3>React js with Shriyash</h3>
+      <Login />
+      <Profile />
+    </UserContextProvider>
   )
 }
 
