@@ -1,10 +1,11 @@
 import React from 'react'
-import { Card } from './component/Card'
+import { AgeCalc } from './components/AgeCalc'
 
 const App = () => {
   return (
     <>
-    <Card />
+    <AgeCalc />
+    <h2>This is a age calculator</h2>
     </>
   )
 }
