@@ -10,6 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.4",
+    "@mui/material": "^5.16.4",
+    "@mui/x-charts": "^7.11.0",
     "copy-to-clipboard": "^3.3.3",
     "framer-motion": "^11.2.6",
     "lucide-react": "^0.397.0",
